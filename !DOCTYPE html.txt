@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harsh Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#020617;
+  color:white;
+  overflow:hidden;
+}
+
+/* BACKGROUND GLOW */
+.bg-glow{
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:radial-gradient(circle,#3b82f6,transparent);
+  filter:blur(120px);
+  top:-100px;
+  left:-100px;
+}
+.bg-glow2{
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:radial-gradient(circle,#9333ea,transparent);
+  filter:blur(120px);
+  bottom:-100px;
+  right:-100px;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+.hero h1{
+  font-size:60px;
+  font-weight:700;
+  background:linear-gradient(45deg,#3b82f6,#9333ea);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:18px;
+  color:#aaa;
+  max-width:500px;
+}
+
+/* BUTTON */
+.btn{
+  margin-top:25px;
+  padding:14px 30px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#3b82f6,#9333ea);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 25px #9333ea;
+}
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 60px;
+  background:rgba(2,6,23,0.6);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+
+.logo{
+  font-size:20px;
+  font-weight:600;
+  background:linear-gradient(45deg,#3b82f6,#9333ea);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.navbar nav a{
+  margin:0 15px;
+  text-decoration:none;
+  color:white;
+  position:relative;
+  font-weight:500;
+}
+
+/* UNDERLINE ANIMATION */
+.navbar nav a::after{
+  content:"";
+  position:absolute;
+  width:0%;
+  height:2px;
+  background:#3b82f6;
+  left:0;
+  bottom:-5px;
+  transition:0.3s;
+}
+
+.navbar nav a:hover::after{
+  width:100%;
+}
+</style>
+</head>
+
+<body>
+  <header class="navbar">
+  <h3 class="logo">Harsh</h3>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="video.html">Video</a>
+    <a href="graphic.html">Graphics</a>
+  </nav>
+</header>
+
+<div class="bg-glow"></div>
+<div class="bg-glow2"></div>
+
+<section class="hero">
+  <h1>Harsh Prajapati</h1>
+  <p>Creative Video Editor & Graphic Designer creating high-quality reels, ads, and social media content.</p>
+  <button class="btn">View My Work</button>
+</section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+video 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Work | Harsh</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+  background:#020617;
+  color:white;
+}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  width:100%;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 60px;
+  background:rgba(2,6,23,0.6);
+  backdrop-filter:blur(10px);
+}
+
+.navbar a{
+  color:white;
+  margin:0 15px;
+  text-decoration:none;
+}
+
+/* HEADER */
+.header{
+  text-align:center;
+  margin-top:120px;
+}
+
+.header h1{
+  font-size:50px;
+  background:linear-gradient(45deg,#3b82f6,#9333ea);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* GRID */
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+  padding:40px;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* CARD */
+.card{
+  background:rgba(30,41,59,0.6);
+  padding:15px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  transition:0.4s;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 0 30px rgba(147,51,234,0.6);
+}
+
+/* VIDEO */
+iframe{
+  width:100%;
+  height:220px;
+  border-radius:12px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <h3>Harsh</h3>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="video.html">Video</a>
+    <a href="graphic.html">Graphics</a>
+  </div>
+</header>
+
+<!-- TITLE -->
+<div class="header">
+  <h1>My Video Work</h1>
+</div>
+
+<!-- VIDEOS -->
+<div class="video-grid">
+
+  <div class="card">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID1"></iframe>
+  </div>
+
+  <div class="card">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID2"></iframe>
+  </div>
+
+  <div class="card">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID3"></iframe>
+  </div>
+
+  <div class="card">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID4"></iframe>
+  </div>
+
+</div>
+
+<footer>
+  Email: prajapatisb78@gmail.com | Phone: 9328193601
+</footer>
+
+</body>
+</html>

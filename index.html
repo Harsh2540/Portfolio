@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harsh Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+  background:#020617;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 60px;
+  background:rgba(2,6,23,0.6);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+
+.logo{
+  font-size:20px;
+  font-weight:600;
+  background:linear-gradient(45deg,#3b82f6,#9333ea);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.navbar nav a{
+  margin:0 15px;
+  text-decoration:none;
+  color:white;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:60px;
+  background:linear-gradient(45deg,#3b82f6,#9333ea);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+  margin-top:15px;
+  color:#aaa;
+}
+
+.btn{
+  margin-top:25px;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#3b82f6,#9333ea);
+  color:white;
+  cursor:pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+  .navbar{padding:15px 20px;}
+  .hero h1{font-size:36px;}
+  .hero p{font-size:14px;padding:0 10px;}
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <h3 class="logo">Harsh</h3>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="video.html">Video</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Harsh Prajapati</h1>
+  <p>Creative Video Editor & Graphic Designer</p>
+  <a href="video.html"><button class="btn">View My Work</button></a>
+</section>
+
+</body>
+</html>

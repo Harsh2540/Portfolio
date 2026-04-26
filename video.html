@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Work</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+  background:#020617;
+  color:white;
+}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  width:100%;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 60px;
+  background:rgba(2,6,23,0.6);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+
+.navbar a{
+  color:white;
+  margin:0 15px;
+  text-decoration:none;
+}
+
+/* TITLE */
+.header{
+  text-align:center;
+  margin-top:100px;
+}
+
+.header h1{
+  font-size:40px;
+  background:linear-gradient(45deg,#3b82f6,#9333ea);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* GRID */
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  padding:30px;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* CARD */
+.card{
+  background:#1e293b;
+  padding:10px;
+  border-radius:15px;
+  text-align:center;
+}
+
+/* VIDEO */
+video{
+  width:90%;
+  aspect-ratio:9/16;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+/* TABLET */
+@media (max-width:1024px){
+  .video-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+/* MOBILE (INSTAGRAM STYLE) */
+@media (max-width:600px){
+
+  .video-grid{
+    grid-template-columns:1fr;
+    padding:10px;
+    scroll-snap-type:y mandatory;
+  }
+
+  .card{
+    max-width:350px;
+    margin:auto;
+    scroll-snap-align:start;
+  }
+
+  video{
+    width:100%;
+  }
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <h3>Harsh</h3>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="video.html">Video</a>
+  </div>
+</header>
+
+<div class="header">
+  <h1>My Video Work</h1>
+</div>
+
+<div class="video-grid">
+
+<div class="card">
+  <video controls>
+    <source src="Video/video/Reel 1.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 2.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 3.mp4" type="video/mp4">
+  </video>
+</div>
+
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 4.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 5.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 6.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 7.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 8.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 9.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 10.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 11.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 12.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 13.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="card">
+  <video controls>
+     <source src="Video/video/Reel 14.mp4" type="video/mp4">
+  </video>
+</div>
+
+</div>
+
+<footer>
+  Email: prajapatisb78@gmail.com | Phone: 9328193601
+</footer>
+
+</body>
+</html>
