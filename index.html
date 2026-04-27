@@ -9,31 +9,45 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
 
 body{
-  height:100vh;
-  overflow:hidden;
+  min-height:100vh;
   background: linear-gradient(135deg,#1e3a8a,#020617,#6d28d9);
   color:white;
 }
 
+/* NAVBAR */
 .navbar{
   position:fixed;
   top:0;
   width:100%;
-  padding:20px 60px;
+  padding:15px 30px;
   display:flex;
   justify-content:space-between;
+  align-items:center;
   background:rgba(255,255,255,0.05);
   backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(255,255,255,0.1);
+  z-index:1000;
+}
+
+.navbar h3{
+  font-size:18px;
+}
+
+.navbar div{
+  display:flex;
+  gap:20px;
 }
 
 .navbar a{
   color:white;
-  margin:0 15px;
-  text-decoration:none;
   font-size:18px;
   transition:0.3s;
 }
@@ -42,19 +56,20 @@ body{
   color:#38bdf8;
 }
 
+/* MAIN */
 .main{
-  height:100vh;
+  min-height:100vh;
   display:grid;
   grid-template-columns:1.2fr 1fr;
   align-items:center;
-  padding:0 80px;
+  padding:100px 80px 60px;
+  gap:40px;
 }
 
+/* LEFT */
 .left h1{
-  font-size:65px;
+  font-size:60px;
   font-weight:700;
-  color:white;
-  text-shadow:0 5px 20px rgba(0,0,0,0.5);
 }
 
 .left h2{
@@ -66,8 +81,10 @@ body{
   margin-top:15px;
   max-width:500px;
   color:#cbd5e1;
+  line-height:1.6;
 }
 
+/* BUTTON */
 .btn{
   margin-top:25px;
   padding:14px 30px;
@@ -85,12 +102,17 @@ body{
   box-shadow:0 0 25px #38bdf8;
 }
 
+/* RIGHT CARD */
 .card{
   background:rgba(255,255,255,0.08);
   border:1px solid rgba(255,255,255,0.15);
   padding:30px;
   border-radius:20px;
   backdrop-filter:blur(20px);
+}
+
+.card h3{
+  margin-bottom:10px;
 }
 
 .skills{
@@ -107,22 +129,87 @@ body{
   font-size:14px;
 }
 
+/* FOOTER */
 footer{
-  position:absolute;
-  bottom:15px;
-  width:100%;
   text-align:center;
+  padding:20px;
   color:#cbd5e1;
   font-size:14px;
 }
 
+/* ================= RESPONSIVE ================= */
+
+/* TABLET */
 @media(max-width:900px){
   .main{
     grid-template-columns:1fr;
     text-align:center;
-    padding:20px;
+    padding:100px 30px 40px;
+  }
+
+  .left h1{
+    font-size:45px;
+  }
+
+  .left p{
+    margin:auto;
+  }
+
+  .card{
+    margin-top:20px;
   }
 }
+
+/* MOBILE */
+@media(max-width:600px){
+
+  .navbar{
+    padding:12px 20px;
+  }
+
+  .navbar h3{
+    font-size:16px;
+  }
+
+  .navbar div{
+    gap:15px;
+  }
+
+  .navbar a{
+    font-size:16px;
+  }
+
+  .main{
+    padding:90px 20px 30px;
+  }
+
+  .left h1{
+    font-size:34px;
+  }
+
+  .left h2{
+    font-size:16px;
+  }
+
+  .left p{
+    font-size:14px;
+  }
+
+  .btn{
+    padding:12px 25px;
+    font-size:14px;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .skill{
+    font-size:12px;
+    padding:6px 12px;
+  }
+}
+
 </style>
 </head>
 
@@ -130,6 +217,7 @@ footer{
 
 <header class="navbar">
   <h3>Harsh</h3>
+
   <div>
     <a href="#"><i class="fas fa-home"></i></a>
     <a href="video.html"><i class="fas fa-video"></i></a>
@@ -139,9 +227,11 @@ footer{
 
 <div class="main">
 
+  <!-- LEFT -->
   <div class="left">
     <h1>Harsh Prajapati</h1>
     <h2>Video Editor & Graphic Designer</h2>
+
     <p>
       I create high-quality reels, ads, and social media content that grabs attention and increases engagement.
     </p>
@@ -151,6 +241,7 @@ footer{
     </a>
   </div>
 
+  <!-- RIGHT -->
   <div class="right">
     <div class="card">
       <h3>About Me</h3>
