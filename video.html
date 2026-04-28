@@ -6,35 +6,36 @@
 <title>Video Work</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 
 body{
-  background:#020617;
+  background: linear-gradient(135deg,#1e3a8a,#020617,#6d28d9);
   color:white;
 }
 
 /* NAVBAR */
 .navbar{
   position:fixed;
-  width:100%;
   top:0;
+  width:100%;
+  padding:20px 40px;
   display:flex;
   justify-content:space-between;
-  padding:20px 60px;
-  background:rgba(2,6,23,0.6);
+  background:rgba(255,255,255,0.05);
   backdrop-filter:blur(10px);
   z-index:1000;
 }
 
 .navbar a{
   color:white;
-  margin:0 15px;
-  text-decoration:none;
+  margin:0 10px;
+  font-size:20px;
 }
 
-/* TITLE */
+/* HEADER */
 .header{
   text-align:center;
   margin-top:100px;
@@ -42,69 +43,59 @@ body{
 
 .header h1{
   font-size:40px;
-  background:linear-gradient(45deg,#3b82f6,#9333ea);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
 }
 
 /* GRID */
-.video-grid{
+.grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:25px;
+  gap:15px;
   padding:30px;
-  max-width:1100px;
-  margin:auto;
 }
 
 /* CARD */
 .card{
-  background:#1e293b;
-  padding:10px;
-  border-radius:15px;
-  text-align:center;
+  cursor:pointer;
 }
 
-/* VIDEO */
-video{
-  width:90%;
+.card video{
+  width:100%;
   aspect-ratio:9/16;
   object-fit:cover;
   border-radius:12px;
 }
 
-/* TABLET */
-@media (max-width:1024px){
-  .video-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+/* POPUP */
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  pointer-events:none;
+  transition:0.3s;
 }
 
-/* MOBILE (INSTAGRAM STYLE) */
-@media (max-width:600px){
-
-  .video-grid{
-    grid-template-columns:1fr;
-    padding:10px;
-    scroll-snap-type:y mandatory;
-  }
-
-  .card{
-    max-width:350px;
-    margin:auto;
-    scroll-snap-align:start;
-  }
-
-  video{
-    width:100%;
-  }
+.popup.active{
+  opacity:1;
+  pointer-events:auto;
 }
 
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:20px;
-  color:#aaa;
+.popup video{
+  height:80%;
+  border-radius:10px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .grid{
+    grid-template-columns:repeat(3,1fr);
+  }
 }
 </style>
 </head>
@@ -114,8 +105,9 @@ footer{
 <header class="navbar">
   <h3>Harsh</h3>
   <div>
-    <a href="index.html">Home</a>
-    <a href="video.html">Video</a>
+    <a href="index.html"><i class="fas fa-home"></i></a>
+    <a href="video.html"><i class="fas fa-video"></i></a>
+    <a href="graphic.html"><i class="fas fa-palette"></i></a>
   </div>
 </header>
 
@@ -123,98 +115,86 @@ footer{
   <h1>My Video Work</h1>
 </div>
 
-<div class="video-grid">
+<div class="grid">
 
-<div class="card">
-  <video controls>
-    <source src="Reel 1.mp4" type="video/mp4">
-  </video>
+  <div class="card" onclick="openVideo('Reel 1.mp4')">
+    <video src="Reel 1.mp4"></video>
+  </div>
+
+  <div class="card" onclick="openVideo('Reel 2.mp4')">
+    <video src="Reel 2.mp4"></video>
+  </div>
+
+  <div class="card" onclick="openVideo('Reel 3.mp4')">
+    <video src="Reel 3.mp4"></video>
+  </div>
+
+    <div class="card" onclick="openVideo('Reel 4.mp4')">
+    <video src="Reel 4.mp4"></video>
+  </div>
+
+  <div class="card" onclick="openVideo('Reel 5.mp4')">
+    <video src="Reel 5.mp4"></video>
+  </div>
+
+  <div class="card" onclick="openVideo('Reel 6.mp4')">
+    <video src="Reel 6.mp4"></video>
+  </div>
+
+    <div class="card" onclick="openVideo('Reel 7.mp4')">
+    <video src="Reel 7.mp4"></video>
+  </div>
+
+  <div class="card" onclick="openVideo('Reel 8.mp4')">
+    <video src="Reel 8.mp4"></video>
+  </div>
+
+  <div class="card" onclick="openVideo('Reel 9.mp4')">
+    <video src="Reel 9.mp4"></video>
+  </div>
+
+    <div class="card" onclick="openVideo('Reel 10.mp4')">
+    <video src="Reel 10.mp4"></video>
+  </div>
+
+  <div class="card" onclick="openVideo('Reel 11.mp4')">
+    <video src="Reel 11.mp4"></video>
+  </div>
+
+  <div class="card" onclick="openVideo('Reel 12.mp4')">
+    <video src="Reel 12.mp4"></video>
+  </div>
+    <div class="card" onclick="openVideo('Reel 13.mp4')">
+    <video src="Reel 13.mp4"></video>
+  </div>
+
+  <div class="card" onclick="openVideo('Reel 14.mp4')">
+    <video src="Reel 14.mp4"></video>
+  </div>
+
+  
 </div>
 
-<div class="card">
-  <video controls>
-     <source src="Reel 2.mp4" type="video/mp4">
-  </video>
+<!-- POPUP -->
+<div class="popup" id="popup" onclick="closeVideo()">
+  <video id="popupVideo" controls></video>
 </div>
 
-<div class="card">
-  <video controls>
-     <source src="Reel 3.mp4" type="video/mp4">
-  </video>
-</div>
+<script>
+function openVideo(src){
+  document.getElementById("popup").classList.add("active");
+  let video = document.getElementById("popupVideo");
+  video.src = src;
+  video.play();
+}
 
-
-<div class="card">
-  <video controls>
-     <source src="Reel 4.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div class="card">
-  <video controls>
-     <source src="Reel 5.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div class="card">
-  <video controls>
-     <source src="Reel 6.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div class="card">
-  <video controls>
-     <source src="Reel 7.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div class="card">
-  <video controls>
-     <source src="Reel 8.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div class="card">
-  <video controls>
-     <source src="Reel 9.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div class="card">
-  <video controls>
-     <source src="Reel 10.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div class="card">
-  <video controls>
-     <source src="Reel 11.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div class="card">
-  <video controls>
-     <source src="Reel 12.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div class="card">
-  <video controls>
-     <source src="Reel 13.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div class="card">
-  <video controls>
-     <source src="Reel 14.mp4" type="video/mp4">
-  </video>
-</div>
-
-</div>
-
-<footer>
-  Email: prajapatisb78@gmail.com | Phone: 9328193601
-</footer>
+function closeVideo(){
+  let popup = document.getElementById("popup");
+  let video = document.getElementById("popupVideo");
+  popup.classList.remove("active");
+  video.pause();
+}
+</script>
 
 </body>
 </html>
