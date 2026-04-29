@@ -30,10 +30,6 @@ body{
   z-index:1000;
 }
 
-.navbar h3{
-  font-size:18px;
-}
-
 .navbar a{
   color:white;
   margin:0 8px;
@@ -71,46 +67,41 @@ body{
   background:black;
 }
 
-/* POPUP */
-.popup{
+/* REEL FULL SCREEN */
+.reel-popup{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.95);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  opacity:0;
-  pointer-events:none;
-  transition:0.3s;
+  background:black;
+  display:none;
+  z-index:9999;
 }
 
-.popup.active{
-  opacity:1;
-  pointer-events:auto;
+.reel-container{
+  height:100%;
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
 }
 
-.popup video{
-  height:80%;
-  max-width:90%;
-  border-radius:10px;
+.reel{
+  width:100%;
+  height:100vh;
+  object-fit:cover;
+  scroll-snap-align:start;
 }
 
-/* 🔥 RESPONSIVE */
-
-/* Tablet */
+/* RESPONSIVE */
 @media(max-width:1024px){
   .grid{
     grid-template-columns:repeat(2,1fr);
   }
 }
 
-/* Mobile */
 @media(max-width:600px){
   .grid{
-    grid-template-columns:repeat(2,1fr); /* 👈 BEST for reels */
+    grid-template-columns:repeat(2,1fr);
   }
 
   .header h1{
@@ -118,10 +109,9 @@ body{
   }
 }
 
-/* Extra Small Mobile */
 @media(max-width:400px){
   .grid{
-    grid-template-columns:1fr; /* 👈 single column */
+    grid-template-columns:1fr;
   }
 }
 </style>
@@ -142,49 +132,85 @@ body{
   <h1>My Video Work</h1>
 </div>
 
+<!-- GRID -->
 <div class="grid">
 
-  <!-- COPY SAME STRUCTURE -->
-  <div class="card" onclick="openVideo('Reel 1.mp4')"><video src="Reel 1.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 2.mp4')"><video src="Reel 2.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 3.mp4')"><video src="Reel 3.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 4.mp4')"><video src="Reel 4.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 5.mp4')"><video src="Reel 5.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 6.mp4')"><video src="Reel 6.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 7.mp4')"><video src="Reel 7.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 8.mp4')"><video src="Reel 8.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 9.mp4')"><video src="Reel 9.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 10.mp4')"><video src="Reel 10.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 11.mp4')"><video src="Reel 11.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 12.mp4')"><video src="Reel 12.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 13.mp4')"><video src="Reel 13.mp4"></video></div>
-  <div class="card" onclick="openVideo('Reel 14.mp4')"><video src="Reel 14.mp4"></video></div>
+  <div class="card" onclick="openVideo(0)"><video src="Reel 1.mp4"></video></div>
+  <div class="card" onclick="openVideo(1)"><video src="Reel 2.mp4"></video></div>
+  <div class="card" onclick="openVideo(2)"><video src="Reel 3.mp4"></video></div>
+  <div class="card" onclick="openVideo(3)"><video src="Reel 4.mp4"></video></div>
+  <div class="card" onclick="openVideo(4)"><video src="Reel 5.mp4"></video></div>
+  <div class="card" onclick="openVideo(5)"><video src="Reel 6.mp4"></video></div>
+  <div class="card" onclick="openVideo(6)"><video src="Reel 7.mp4"></video></div>
+  <div class="card" onclick="openVideo(7)"><video src="Reel 8.mp4"></video></div>
+  <div class="card" onclick="openVideo(8)"><video src="Reel 9.mp4"></video></div>
+  <div class="card" onclick="openVideo(9)"><video src="Reel 10.mp4"></video></div>
+  <div class="card" onclick="openVideo(10)"><video src="Reel 11.mp4"></video></div>
+  <div class="card" onclick="openVideo(11)"><video src="Reel 12.mp4"></video></div>
+  <div class="card" onclick="openVideo(12)"><video src="Reel 13.mp4"></video></div>
+  <div class="card" onclick="openVideo(13)"><video src="Reel 14.mp4"></video></div>
 
 </div>
 
-<!-- POPUP -->
-<div class="popup" id="popup" onclick="closeVideo()">
-  <video id="popupVideo" controls></video>
+<!-- REEL POPUP -->
+<div class="reel-popup" id="reelPopup">
+  <div class="reel-container">
+
+    <video src="Reel 1.mp4" class="reel"></video>
+    <video src="Reel 2.mp4" class="reel"></video>
+    <video src="Reel 3.mp4" class="reel"></video>
+    <video src="Reel 4.mp4" class="reel"></video>
+    <video src="Reel 5.mp4" class="reel"></video>
+    <video src="Reel 6.mp4" class="reel"></video>
+    <video src="Reel 7.mp4" class="reel"></video>
+    <video src="Reel 8.mp4" class="reel"></video>
+    <video src="Reel 9.mp4" class="reel"></video>
+    <video src="Reel 10.mp4" class="reel"></video>
+    <video src="Reel 11.mp4" class="reel"></video>
+    <video src="Reel 12.mp4" class="reel"></video>
+    <video src="Reel 13.mp4" class="reel"></video>
+    <video src="Reel 14.mp4" class="reel"></video>
+
+  </div>
 </div>
 
 <script>
-function openVideo(src){
-  const popup = document.getElementById("popup");
-  const video = document.getElementById("popupVideo");
+const popup = document.getElementById("reelPopup");
+const reels = document.querySelectorAll(".reel");
 
-  popup.classList.add("active");
-  video.src = src;
-  video.play();
+/* OPEN VIDEO */
+function openVideo(index){
+  popup.style.display = "block";
+
+  reels.forEach((video,i)=>{
+    video.pause();
+    if(i === index){
+      video.currentTime = 0;
+      video.play();
+    }
+  });
 }
 
-function closeVideo(){
-  const popup = document.getElementById("popup");
-  const video = document.getElementById("popupVideo");
+/* AUTO PLAY ON SCROLL */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.play();
+    } else {
+      entry.target.pause();
+    }
+  });
+},{ threshold:0.7 });
 
-  popup.classList.remove("active");
-  video.pause();
-  video.src = "";
-}
+reels.forEach(video=>{
+  observer.observe(video);
+});
+
+/* DOUBLE TAP CLOSE */
+popup.addEventListener("dblclick",()=>{
+  popup.style.display = "none";
+  reels.forEach(v=>v.pause());
+});
 </script>
 
 </body>
