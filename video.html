@@ -50,7 +50,7 @@ body{
   padding:20px;
 }
 
-.card video{
+.grid video{
   width:100%;
   aspect-ratio:9/16;
   object-fit:cover;
@@ -58,7 +58,7 @@ body{
   cursor:pointer;
 }
 
-/* 🔥 REEL POPUP */
+/* POPUP */
 .reel-popup{
   position:fixed;
   top:0;
@@ -77,22 +77,36 @@ body{
   scroll-snap-type:y mandatory;
 }
 
-/* EACH VIDEO FULL SCREEN CENTER */
+/* EACH VIDEO */
 .reel-box{
   height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
   scroll-snap-align:start;
+  padding:10px;
 }
 
-/* VIDEO SIZE FIXED 9:16 */
+/* VIDEO */
 .reel{
-  height:90vh;
+  height:90vh;   /* 👈 gap fix */
+  width:auto;
   aspect-ratio:9/16;
-  max-width:100%;
-  object-fit:cover;
-  border-radius:12px;
+  object-fit:contain;
+  border-radius:16px;
+
+  border:3px solid transparent;
+  background:linear-gradient(black,black) padding-box,
+             linear-gradient(270deg,red,orange,yellow,green,cyan,blue,violet) border-box;
+
+  background-size:300% 300%;
+  animation:borderMove 6s linear infinite;
+}
+
+/* BORDER ANIMATION */
+@keyframes borderMove{
+  0%{background-position:0% 50%;}
+  100%{background-position:100% 50%;}
 }
 
 /* RESPONSIVE */
@@ -100,8 +114,9 @@ body{
   .grid{grid-template-columns:repeat(2,1fr);}
 }
 
+/* MOBILE */
 @media(max-width:600px){
-  .grid{grid-template-columns:repeat(2,1fr);}
+  .grid{grid-template-columns:1fr;} /* 👈 one grid */
 }
 
 @media(max-width:400px){
@@ -143,24 +158,24 @@ body{
   <video src="Reel 14.mp4" onclick="openVideo(13)"></video>
 </div>
 
-<!-- REEL POPUP -->
+<!-- POPUP -->
 <div class="reel-popup" id="popup">
   <div class="reel-container">
 
-    <div class="reel-box"><video class="reel" src="Reel 1.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 2.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 3.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 4.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 5.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 6.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 7.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 8.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 9.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 10.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 11.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 12.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 13.mp4"></video></div>
-    <div class="reel-box"><video class="reel" src="Reel 14.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 1.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 2.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 3.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 4.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 5.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 6.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 7.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 8.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 9.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 10.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 11.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 12.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 13.mp4" playsinline></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 14.mp4" playsinline></video></div>
 
   </div>
 </div>
@@ -174,28 +189,25 @@ const container = document.querySelector(".reel-container");
 function openVideo(index){
   popup.style.display = "block";
 
-  // scroll to selected video
-  container.scrollTo({
-    top: index * window.innerHeight,
-    behavior: "instant"
-  });
-
-  reels.forEach((v,i)=>{
-    v.pause();
-    if(i === index){
-      v.currentTime = 0;
-      v.play();
-    }
-  });
+  setTimeout(()=>{
+    container.scrollTo({
+      top: index * window.innerHeight,
+      behavior: "auto"
+    });
+  },100);
 }
 
-/* AUTO PLAY */
+/* AUTO PLAY + SOUND */
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
+    const video = entry.target;
+
     if(entry.isIntersecting){
-      entry.target.play();
+      video.currentTime = 0;
+      video.muted = false;   /* 🔊 sound ON */
+      video.play();
     } else {
-      entry.target.pause();
+      video.pause();
     }
   });
 },{ threshold:0.8 });
