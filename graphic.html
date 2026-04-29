@@ -21,9 +21,10 @@ body{
   position:fixed;
   top:0;
   width:100%;
-  padding:20px 40px;
+  padding:15px 20px;
   display:flex;
   justify-content:space-between;
+  align-items:center;
   background:rgba(255,255,255,0.05);
   backdrop-filter:blur(10px);
   z-index:1000;
@@ -31,18 +32,18 @@ body{
 
 .navbar a{
   color:white;
-  margin:0 10px;
-  font-size:20px;
+  margin:0 8px;
+  font-size:18px;
 }
 
 /* HEADER */
 .header{
   text-align:center;
-  margin-top:100px;
+  margin-top:90px;
 }
 
 .header h1{
-  font-size:40px;
+  font-size:32px;
 }
 
 /* GRID */
@@ -50,41 +51,45 @@ body{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:15px;
-  padding:30px;
+  padding:20px;
 }
 
 /* CARD */
 .card{
   cursor:pointer;
   overflow:hidden;
-  border-radius:12px;
+  border-radius:15px;
+  position:relative;
 }
 
 .card img{
   width:100%;
   aspect-ratio:1/1;
   object-fit:cover;
-  transition:0.3s;
+  transition:0.4s;
 }
 
+/* HOVER EFFECT */
 .card:hover img{
   transform:scale(1.1);
 }
 
-/* POPUP */
+/* POPUP (PREMIUM) */
 .popup{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.9);
+  background:rgba(0,0,0,0.95);
+  backdrop-filter:blur(10px);
   display:flex;
   justify-content:center;
   align-items:center;
   opacity:0;
   pointer-events:none;
-  transition:0.3s;
+  transition:0.4s;
+  z-index:9999;
 }
 
 .popup.active{
@@ -92,15 +97,38 @@ body{
   pointer-events:auto;
 }
 
+/* IMAGE STYLE */
 .popup img{
-  max-height:80%;
-  border-radius:10px;
+  max-width:90%;
+  max-height:90%;
+  border-radius:15px;
+  box-shadow:0 0 40px rgba(56,189,248,0.4);
+  animation:zoom 0.4s ease;
 }
 
-/* MOBILE */
-@media(max-width:768px){
+/* ANIMATION */
+@keyframes zoom{
+  from{transform:scale(0.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+/* RESPONSIVE */
+
+/* Tablet */
+@media(max-width:1024px){
   .grid{
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+/* Mobile */
+@media(max-width:600px){
+  .grid{
+    grid-template-columns:1fr; /* 👈 single column mobile */
+  }
+
+  .header h1{
+    font-size:24px;
   }
 }
 </style>
@@ -121,6 +149,7 @@ body{
   <h1>My Graphic Work</h1>
 </div>
 
+<!-- GRID -->
 <div class="grid">
 
   <div class="card" onclick="openImg('1.png')"><img src="1.png"></div>
@@ -145,8 +174,11 @@ body{
 
 <script>
 function openImg(src){
-  document.getElementById("popup").classList.add("active");
-  document.getElementById("popupImg").src = src;
+  const popup = document.getElementById("popup");
+  const img = document.getElementById("popupImg");
+
+  popup.classList.add("active");
+  img.src = src;
 }
 
 function closeImg(){
