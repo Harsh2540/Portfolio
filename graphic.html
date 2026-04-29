@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Graphics Work</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -62,6 +62,7 @@ body{
   position:relative;
 }
 
+/* IMAGE */
 .card img{
   width:100%;
   aspect-ratio:1/1;
@@ -69,12 +70,56 @@ body{
   transition:0.4s;
 }
 
-/* HOVER EFFECT */
-.card:hover img{
-  transform:scale(1.1);
+/* 🔥 DARK OVERLAY */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  opacity:0;
+  transition:0.3s;
 }
 
-/* POPUP (PREMIUM) */
+/* CENTER TEXT */
+.click-text{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:1px;
+  color:#fff;
+  opacity:0;
+  transition:0.3s;
+  text-shadow:0 0 10px rgba(0,0,0,0.8);
+}
+
+/* HOVER EFFECT (PC) */
+.card:hover::before{
+  opacity:1;
+}
+
+.card:hover .click-text{
+  opacity:1;
+}
+
+.card:hover img{
+  transform:scale(1.1);
+  filter:brightness(0.7);
+}
+
+/* MOBILE ALWAYS SHOW */
+@media(max-width:600px){
+  .click-text{
+    opacity:1;
+  }
+  .card::before{
+    opacity:1;
+  }
+}
+
+/* POPUP */
 .popup{
   position:fixed;
   top:0;
@@ -97,7 +142,6 @@ body{
   pointer-events:auto;
 }
 
-/* IMAGE STYLE */
 .popup img{
   max-width:90%;
   max-height:90%;
@@ -106,30 +150,19 @@ body{
   animation:zoom 0.4s ease;
 }
 
-/* ANIMATION */
 @keyframes zoom{
   from{transform:scale(0.7);opacity:0}
   to{transform:scale(1);opacity:1}
 }
 
 /* RESPONSIVE */
-
-/* Tablet */
 @media(max-width:1024px){
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+  .grid{grid-template-columns:repeat(2,1fr);}
 }
 
-/* Mobile */
 @media(max-width:600px){
-  .grid{
-    grid-template-columns:1fr; /* 👈 single column mobile */
-  }
-
-  .header h1{
-    font-size:24px;
-  }
+  .grid{grid-template-columns:1fr;}
+  .header h1{font-size:24px;}
 }
 </style>
 </head>
@@ -152,18 +185,58 @@ body{
 <!-- GRID -->
 <div class="grid">
 
-  <div class="card" onclick="openImg('1.png')"><img src="1.png"></div>
-  <div class="card" onclick="openImg('2.png')"><img src="2.png"></div>
-  <div class="card" onclick="openImg('3.png')"><img src="3.png"></div>
-  <div class="card" onclick="openImg('4.png')"><img src="4.png"></div>
-  <div class="card" onclick="openImg('5.png')"><img src="5.png"></div>
-  <div class="card" onclick="openImg('6.png')"><img src="6.png"></div>
-  <div class="card" onclick="openImg('7.png')"><img src="7.png"></div>
-  <div class="card" onclick="openImg('8.png')"><img src="8.png"></div>
-  <div class="card" onclick="openImg('9.png')"><img src="9.png"></div>
-  <div class="card" onclick="openImg('10.png')"><img src="10.png"></div>
-  <div class="card" onclick="openImg('11.png')"><img src="11.png"></div>
-  <div class="card" onclick="openImg('12.png')"><img src="12.png"></div>
+  <!-- COPY SAME -->
+  <div class="card" onclick="openImg('1.png')">
+    <img src="1.png">
+    <div class="click-text">Click Here</div>
+  </div>
+
+  <div class="card" onclick="openImg('2.png')">
+    <img src="2.png">
+    <div class="click-text">Click Here</div>
+  </div>
+
+  <div class="card" onclick="openImg('3.png')">
+    <img src="3.png">
+    <div class="click-text">Click Here</div>
+  </div>
+
+  <div class="card" onclick="openImg('4.png')">
+    <img src="4.png">
+    <div class="click-text">Click Here</div>
+  </div>
+
+  <div class="card" onclick="openImg('5.png')">
+    <img src="5.png">
+    <div class="click-text">Click Here</div>
+  </div>
+
+  <div class="card" onclick="openImg('6.png')">
+    <img src="6.png">
+    <div class="click-text">Click Here</div>
+  </div>
+
+  <div class="card" onclick="openImg('7.png')">
+    <img src="7.png">
+    <div class="click-text">Click Here</div>
+  </div>
+
+  <div class="card" onclick="openImg('8.png')">
+    <img src="8.png">
+    <div class="click-text">Click Here</div>
+  </div>
+
+  <div class="card" onclick="openImg('9.png')">
+    <img src="9.png">
+    <div class="click-text">Click Here</div>
+  </div>
+
+  <div class="card" onclick="openImg('10.png')">
+    <img src="10.png">
+    <div class="click-text">Click Here</div>
+  </div>
+
+  
 
 </div>
 
@@ -174,11 +247,8 @@ body{
 
 <script>
 function openImg(src){
-  const popup = document.getElementById("popup");
-  const img = document.getElementById("popupImg");
-
-  popup.classList.add("active");
-  img.src = src;
+  document.getElementById("popup").classList.add("active");
+  document.getElementById("popupImg").src = src;
 }
 
 function closeImg(){
