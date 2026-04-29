@@ -42,10 +42,6 @@ body{
   margin-top:90px;
 }
 
-.header h1{
-  font-size:32px;
-}
-
 /* GRID */
 .grid{
   display:grid;
@@ -54,20 +50,15 @@ body{
   padding:20px;
 }
 
-/* CARD */
-.card{
-  cursor:pointer;
-}
-
 .card video{
   width:100%;
   aspect-ratio:9/16;
   object-fit:cover;
   border-radius:12px;
-  background:black;
+  cursor:pointer;
 }
 
-/* REEL FULL SCREEN */
+/* 🔥 REEL POPUP */
 .reel-popup{
   position:fixed;
   top:0;
@@ -79,40 +70,42 @@ body{
   z-index:9999;
 }
 
+/* SCROLL */
 .reel-container{
   height:100%;
   overflow-y:scroll;
   scroll-snap-type:y mandatory;
 }
 
-.reel{
-  width:100%;
+/* EACH VIDEO FULL SCREEN CENTER */
+.reel-box{
   height:100vh;
-  object-fit:cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   scroll-snap-align:start;
+}
+
+/* VIDEO SIZE FIXED 9:16 */
+.reel{
+  height:90vh;
+  aspect-ratio:9/16;
+  max-width:100%;
+  object-fit:cover;
+  border-radius:12px;
 }
 
 /* RESPONSIVE */
 @media(max-width:1024px){
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+  .grid{grid-template-columns:repeat(2,1fr);}
 }
 
 @media(max-width:600px){
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .header h1{
-    font-size:24px;
-  }
+  .grid{grid-template-columns:repeat(2,1fr);}
 }
 
 @media(max-width:400px){
-  .grid{
-    grid-template-columns:1fr;
-  }
+  .grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -129,69 +122,74 @@ body{
 </header>
 
 <div class="header">
-  <h1>My Video Work</h1>
+  <h1 style="font-size:28px;">My Video Work</h1>
 </div>
 
 <!-- GRID -->
 <div class="grid">
-
-  <div class="card" onclick="openVideo(0)"><video src="Reel 1.mp4"></video></div>
-  <div class="card" onclick="openVideo(1)"><video src="Reel 2.mp4"></video></div>
-  <div class="card" onclick="openVideo(2)"><video src="Reel 3.mp4"></video></div>
-  <div class="card" onclick="openVideo(3)"><video src="Reel 4.mp4"></video></div>
-  <div class="card" onclick="openVideo(4)"><video src="Reel 5.mp4"></video></div>
-  <div class="card" onclick="openVideo(5)"><video src="Reel 6.mp4"></video></div>
-  <div class="card" onclick="openVideo(6)"><video src="Reel 7.mp4"></video></div>
-  <div class="card" onclick="openVideo(7)"><video src="Reel 8.mp4"></video></div>
-  <div class="card" onclick="openVideo(8)"><video src="Reel 9.mp4"></video></div>
-  <div class="card" onclick="openVideo(9)"><video src="Reel 10.mp4"></video></div>
-  <div class="card" onclick="openVideo(10)"><video src="Reel 11.mp4"></video></div>
-  <div class="card" onclick="openVideo(11)"><video src="Reel 12.mp4"></video></div>
-  <div class="card" onclick="openVideo(12)"><video src="Reel 13.mp4"></video></div>
-  <div class="card" onclick="openVideo(13)"><video src="Reel 14.mp4"></video></div>
-
+  <video src="Reel 1.mp4" onclick="openVideo(0)"></video>
+  <video src="Reel 2.mp4" onclick="openVideo(1)"></video>
+  <video src="Reel 3.mp4" onclick="openVideo(2)"></video>
+  <video src="Reel 4.mp4" onclick="openVideo(3)"></video>
+  <video src="Reel 5.mp4" onclick="openVideo(4)"></video>
+  <video src="Reel 6.mp4" onclick="openVideo(5)"></video>
+  <video src="Reel 7.mp4" onclick="openVideo(6)"></video>
+  <video src="Reel 8.mp4" onclick="openVideo(7)"></video>
+  <video src="Reel 9.mp4" onclick="openVideo(8)"></video>
+  <video src="Reel 10.mp4" onclick="openVideo(9)"></video>
+  <video src="Reel 11.mp4" onclick="openVideo(10)"></video>
+  <video src="Reel 12.mp4" onclick="openVideo(11)"></video>
+  <video src="Reel 13.mp4" onclick="openVideo(12)"></video>
+  <video src="Reel 14.mp4" onclick="openVideo(13)"></video>
 </div>
 
 <!-- REEL POPUP -->
-<div class="reel-popup" id="reelPopup">
+<div class="reel-popup" id="popup">
   <div class="reel-container">
 
-    <video src="Reel 1.mp4" class="reel"></video>
-    <video src="Reel 2.mp4" class="reel"></video>
-    <video src="Reel 3.mp4" class="reel"></video>
-    <video src="Reel 4.mp4" class="reel"></video>
-    <video src="Reel 5.mp4" class="reel"></video>
-    <video src="Reel 6.mp4" class="reel"></video>
-    <video src="Reel 7.mp4" class="reel"></video>
-    <video src="Reel 8.mp4" class="reel"></video>
-    <video src="Reel 9.mp4" class="reel"></video>
-    <video src="Reel 10.mp4" class="reel"></video>
-    <video src="Reel 11.mp4" class="reel"></video>
-    <video src="Reel 12.mp4" class="reel"></video>
-    <video src="Reel 13.mp4" class="reel"></video>
-    <video src="Reel 14.mp4" class="reel"></video>
+    <div class="reel-box"><video class="reel" src="Reel 1.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 2.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 3.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 4.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 5.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 6.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 7.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 8.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 9.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 10.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 11.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 12.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 13.mp4"></video></div>
+    <div class="reel-box"><video class="reel" src="Reel 14.mp4"></video></div>
 
   </div>
 </div>
 
 <script>
-const popup = document.getElementById("reelPopup");
+const popup = document.getElementById("popup");
 const reels = document.querySelectorAll(".reel");
+const container = document.querySelector(".reel-container");
 
-/* OPEN VIDEO */
+/* OPEN */
 function openVideo(index){
   popup.style.display = "block";
 
-  reels.forEach((video,i)=>{
-    video.pause();
+  // scroll to selected video
+  container.scrollTo({
+    top: index * window.innerHeight,
+    behavior: "instant"
+  });
+
+  reels.forEach((v,i)=>{
+    v.pause();
     if(i === index){
-      video.currentTime = 0;
-      video.play();
+      v.currentTime = 0;
+      v.play();
     }
   });
 }
 
-/* AUTO PLAY ON SCROLL */
+/* AUTO PLAY */
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -200,13 +198,11 @@ const observer = new IntersectionObserver((entries)=>{
       entry.target.pause();
     }
   });
-},{ threshold:0.7 });
+},{ threshold:0.8 });
 
-reels.forEach(video=>{
-  observer.observe(video);
-});
+reels.forEach(video=>observer.observe(video));
 
-/* DOUBLE TAP CLOSE */
+/* CLOSE */
 popup.addEventListener("dblclick",()=>{
   popup.style.display = "none";
   reels.forEach(v=>v.pause());
