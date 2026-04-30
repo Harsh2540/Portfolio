@@ -6,7 +6,6 @@
 <title>Video Work</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
@@ -28,12 +27,6 @@ body{
   background:rgba(255,255,255,0.05);
   backdrop-filter:blur(10px);
   z-index:1000;
-}
-
-.navbar a{
-  color:white;
-  margin:0 8px;
-  font-size:18px;
 }
 
 /* HEADER */
@@ -65,16 +58,19 @@ body{
   left:0;
   width:100%;
   height:100%;
-  background:black;
   display:none;
   z-index:9999;
+
+  /* 🔥 THEME BG */
+  background: linear-gradient(135deg,#0f172a,#020617,#4c1d95);
 }
 
 /* SCROLL */
 .reel-container{
-  height:100%;
+  height:100vh;
   overflow-y:scroll;
   scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
 }
 
 /* EACH VIDEO */
@@ -84,20 +80,21 @@ body{
   justify-content:center;
   align-items:center;
   scroll-snap-align:start;
-  padding:10px;
+  scroll-snap-stop:always;
 }
 
 /* VIDEO */
 .reel{
-  height:90vh;   /* 👈 gap fix */
-  width:auto;
+  max-height:85vh;
+  max-width:90vw;
   aspect-ratio:9/16;
   object-fit:contain;
   border-radius:16px;
 
-  border:3px solid transparent;
-  background:linear-gradient(black,black) padding-box,
-             linear-gradient(270deg,red,orange,yellow,green,cyan,blue,violet) border-box;
+  border:4px solid transparent;
+  background:
+    linear-gradient(black,black) padding-box,
+    linear-gradient(270deg,red,orange,yellow,green,cyan,blue,violet) border-box;
 
   background-size:300% 300%;
   animation:borderMove 6s linear infinite;
@@ -109,17 +106,8 @@ body{
   100%{background-position:100% 50%;}
 }
 
-/* RESPONSIVE */
-@media(max-width:1024px){
-  .grid{grid-template-columns:repeat(2,1fr);}
-}
-
 /* MOBILE */
 @media(max-width:600px){
-  .grid{grid-template-columns:1fr;} /* 👈 one grid */
-}
-
-@media(max-width:400px){
   .grid{grid-template-columns:1fr;}
 }
 </style>
@@ -129,11 +117,6 @@ body{
 
 <header class="navbar">
   <h3>Harsh</h3>
-  <div>
-    <a href="index.html"><i class="fas fa-home"></i></a>
-    <a href="video.html"><i class="fas fa-video"></i></a>
-    <a href="graphic.html"><i class="fas fa-palette"></i></a>
-  </div>
 </header>
 
 <div class="header">
@@ -160,7 +143,7 @@ body{
 
 <!-- POPUP -->
 <div class="reel-popup" id="popup">
-  <div class="reel-container">
+  <div class="reel-container" id="container">
 
     <div class="reel-box"><video class="reel" src="Reel 1.mp4" playsinline></video></div>
     <div class="reel-box"><video class="reel" src="Reel 2.mp4" playsinline></video></div>
@@ -176,48 +159,70 @@ body{
     <div class="reel-box"><video class="reel" src="Reel 12.mp4" playsinline></video></div>
     <div class="reel-box"><video class="reel" src="Reel 13.mp4" playsinline></video></div>
     <div class="reel-box"><video class="reel" src="Reel 14.mp4" playsinline></video></div>
-
+   
   </div>
 </div>
 
 <script>
 const popup = document.getElementById("popup");
 const reels = document.querySelectorAll(".reel");
-const container = document.querySelector(".reel-container");
+const container = document.getElementById("container");
 
 /* OPEN */
 function openVideo(index){
   popup.style.display = "block";
 
+  // 🔥 browser back handle
+  history.pushState({popup:true}, "");
+
   setTimeout(()=>{
-    container.scrollTo({
-      top: index * window.innerHeight,
-      behavior: "auto"
-    });
-  },100);
+    container.scrollTop = index * window.innerHeight;
+  },50);
 }
 
-/* AUTO PLAY + SOUND */
+/* 🔥 TAP = PLAY / PAUSE */
+reels.forEach(video=>{
+  video.addEventListener("click",(e)=>{
+    e.stopPropagation();
+
+    if(video.paused){
+      video.play();
+    }else{
+      video.pause();
+    }
+  });
+});
+
+/* AUTOPLAY */
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     const video = entry.target;
 
     if(entry.isIntersecting){
       video.currentTime = 0;
-      video.muted = false;   /* 🔊 sound ON */
       video.play();
     } else {
       video.pause();
     }
   });
-},{ threshold:0.8 });
+},{ threshold:0.9 });
 
 reels.forEach(video=>observer.observe(video));
 
-/* CLOSE */
-popup.addEventListener("dblclick",()=>{
+/* CLOSE FUNCTION */
+function closePopup(){
   popup.style.display = "none";
   reels.forEach(v=>v.pause());
+}
+
+/* DOUBLE TAP CLOSE */
+popup.addEventListener("dblclick",closePopup);
+
+/* 🔥 BACK BUTTON FIX */
+window.addEventListener("popstate",(e)=>{
+  if(popup.style.display === "block"){
+    closePopup();
+  }
 });
 </script>
 
